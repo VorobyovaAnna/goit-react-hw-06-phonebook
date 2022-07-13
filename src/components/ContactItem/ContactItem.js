@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ContactData, ContactsItem } from './ContactItem.styled';
 
-const ContactItem = ({ contacts: { id, name, number }, onDeleteContact }) => {
+const ContactItem = ({ id, name, number, onDeleteContact }) => {
   return (
     <ContactsItem>
       <ContactData>

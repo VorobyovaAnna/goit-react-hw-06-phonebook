@@ -1,16 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useContacts } from 'hooks/useContacts';
 
-const Filter = ({ value, onChange }) => (
-  <label>
-    Find contacts by name
-    <input type="text" value={value} onChange={onChange} />
-  </label>
-);
-
-Filter.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+const Filter = () => {
+  const { changeFilter, filter } = useContacts();
+  return (
+    <label>
+      Find contacts by name
+      <input type="text" value={filter} onChange={e => changeFilter(e.currentTarget.value)} />
+    </label>
+  );
 };
 
 export default Filter;

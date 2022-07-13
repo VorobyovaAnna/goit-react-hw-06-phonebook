@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { Label, ErrorText } from './ContactForm.styled';
+import { useContacts } from 'hooks/useContacts';
 
 
 const schema = yup.object().shape({
@@ -30,9 +30,11 @@ const initialValues = {
   number: '',
 };
 
-const ContactForm = ({ onSubmit }) => {
+const ContactForm = () => {
+  const { addContact } = useContacts();
   const handleSubmit = (values, { resetForm }) => {
-    onSubmit(values);
+    const { name, number } = values;
+    addContact(name, number);
     resetForm();
   };
   return (
@@ -57,10 +59,6 @@ const ContactForm = ({ onSubmit }) => {
       </Form>
     </Formik>
   );
-};
-
-ContactForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
 };
 
 export default ContactForm;

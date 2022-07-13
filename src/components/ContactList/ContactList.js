@@ -1,12 +1,15 @@
 import React from 'react';
 import ContactItem from '../ContactItem';
 import { Contacts } from './ContactList.styled';
+import { useContacts } from 'hooks/useContacts';
 
-const ContactList = ({ contacts, onDeleteContact }) => {
+const ContactList = () => {
+  const { deleteContact, getVisibleContacts } = useContacts();
+  const contacts = getVisibleContacts();
   return (
     <Contacts>
-      {contacts.map(contact => (
-        <ContactItem key={contact.id} onDeleteContact={onDeleteContact} contacts={contact} />
+      {contacts.map(({ id, name, number }) => (
+        <ContactItem key={id} name={name} number={number} onDeleteContact={() => deleteContact(id)} />
       ))}
     </Contacts>
   );
