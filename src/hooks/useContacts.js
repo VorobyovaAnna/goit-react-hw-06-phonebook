@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { addItem, deleteItem, setFilter } from 'redux/contactsSlice';
-import { getContacts, getFilter } from 'redux/contactsSelectors'
+import { getContacts } from 'redux/contactsSelectors'
 
 export const useContacts = () => {
     const dispatch = useDispatch();
