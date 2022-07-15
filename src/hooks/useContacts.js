@@ -1,11 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
-import { addItem, deleteItem, setFilter, getContacts, getFilter } from 'redux/contactsSlice'
+import { addItem, deleteItem, setFilter } from 'redux/contactsSlice';
+import { getContacts, getFilter } from 'redux/contactsSelectors'
 
 export const useContacts = () => {
     const dispatch = useDispatch();
     const contacts = useSelector(getContacts);
-    const filter = useSelector(getFilter);
+    // const filter = useSelector(getFilter);
 
     const setContact = contact => dispatch(addItem(contact));
     const deleteContact = contactId => dispatch(deleteItem(contactId));
@@ -27,17 +28,10 @@ export const useContacts = () => {
   };
 
     
-  const getVisibleContacts = () => {
-    const normalizedFilter = filter.toLowerCase();
-
-    return contacts.filter(({ name }) => name.toLowerCase().includes(normalizedFilter));
-  };
-    
   return {
-    filter,
+    // filter,
     addContact,
     deleteContact,
     changeFilter,
-    getVisibleContacts,
   };
 };

@@ -1,8 +1,8 @@
 import { AppContainer } from './App.styled';
-import { GlobalStyle } from './GlobalStyle';
-import ContactForm from './ContactForm';
-import ContactList from './ContactList';
-import Filter from './Filter';
+import { GlobalStyle } from '../GlobalStyle';
+import ContactForm from '../ContactForm';
+import ContactList from '../ContactList';
+import Filter from '../Filter';
 
 const App = () => {
 
